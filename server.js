@@ -22,11 +22,11 @@ app.get('/artical-one',function(req,res){
 }
 );
 app.get('/artical-two',function(req,res){
-  res.send("artical two requested and will server here")  ;
+  res.sendFile(path.join(__dirname, 'ui', 'artical-two.html'));
 }
 );
 app.get('/artical-three',function(req,res){
-  res.send("artical three requested and will server here")  ;
+  res.sendFile(path.join(__dirname, 'ui', 'artical-three.html'));
 }
 );
 
