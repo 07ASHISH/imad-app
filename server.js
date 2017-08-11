@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articalOne={
+var articals={
+    'artical-One':{
     title :'Artical-one',
     heading:'Artical-one',
     date :'11 aug, 2017',
@@ -13,6 +14,20 @@ var articalOne={
         </p>
    <p>this is paragraph for my first artical!this is paragraph for my first articalthis is paragraph for my first articalthis is paragraph for my first articalthis is paragraph for my first articalthis is paragraph for my first artical
   </p> `
+   },
+
+    'artical-Two':{
+            title :'Artical-two',
+    heading:'Artical Two',
+    date :'12 aug, 2017',
+    content:'<p> this is second artical</p>' 
+        
+        
+    },
+    'artical-Three':{     title :'Artical Three',
+    heading:'Artical Three',
+    date :'13 aug, 2017',
+    content:`<p>this is my third artical</p>`},
 };
 function createtemplate(data)
 {
@@ -66,18 +81,12 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/artical-one',function(req,res){
-  res.send(createtemplate(articalOne));
+app.get('/:articalName',function(req,res){
+ var   articalName=req.params.articalName;
+  res.send(createtemplate(articals[articalName]));
 }
 );
-app.get('/artical-two',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'artical-two.html'));
-}
-);
-app.get('/artical-three',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'artical-three.html'));
-}
-);
+
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
