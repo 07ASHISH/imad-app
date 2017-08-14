@@ -6,7 +6,7 @@ button.onclick = function()
     var request = XMLHttpRequest();
     request.onreadystatechange = function(){
     // Process the server response here.
-    if(request.readystate===XMLHttpRequest.DONE)
+    if(request.readyState===XMLHttpRequest.DONE)
     {
         if(request.status==200)
         {
